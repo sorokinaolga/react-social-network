@@ -9,6 +9,7 @@ ul {
 
 .item {
   color: white;
+  text-decoration: none;
 }
 
 .item:hover {
@@ -16,5 +17,5 @@ ul {
 }
 
 .item.active {
-  color: blue;
+  color: darkorange;
 }
