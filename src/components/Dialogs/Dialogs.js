@@ -3,22 +3,21 @@ import DialogItem from './DialogItem/DialogItem';
 import style from './Dialogs.module.css';
 import Message from './Message/Message';
 
+const Dialogs = (props) => {
+  let arrayItemData = 
+    props.messagesPage.dialogsData.map(element => <DialogItem id={element.id} name={element.name} />);
+  
+  let arrayMessageData = 
+    props.messagesPage.dialogsData.map(element => <Message text={
+      element.message.map(el => el.text)} />);
 
-
-const Dialogs = () => {
   return (
     <div className={style.dialogs}>
       <div className={style.items}>
-        <DialogItem id='1' name='Витя' />
-        <DialogItem id='2' name='Петя' />
-        <DialogItem id='3' name='Лена' />
-        <DialogItem id='4' name='Света' />
-        <DialogItem id='5' name='Катя' />
+        { arrayItemData }
       </div>
       <div className={style.messages}>
-        <Message text='Привет!' />
-        <Message text='Как дела' />
-        <Message text='Что нового?' />
+        { arrayMessageData }
       </div>
     </div>
   );
