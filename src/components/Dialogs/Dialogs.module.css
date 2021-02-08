@@ -9,3 +9,7 @@
 .messages {
   padding: 10px;
 }
+
+.messages button {
+  display: block;
+}

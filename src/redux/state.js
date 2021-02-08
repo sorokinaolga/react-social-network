@@ -1,3 +1,4 @@
+import { rerenderEntireTree } from "../render";
 
 let state = {
   profilePage: {
@@ -7,6 +8,7 @@ let state = {
       {id: 3, title: 'Post 3', src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'},
       {id: 4, title: 'Post 4', src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'},
     ],
+    newPostText: 'it-kamasutra',
   },
   messagesPage: {
     dialogsData: [
@@ -17,6 +19,24 @@ let state = {
       {id: 5, name: 'Катя', message: [{id: 1, text: 'Хелоу'}, {id: 2, text: 'Как дела?'},]},
     ] 
   }
+}
+
+export let addPost = () => {
+  let post = {id: 5, title: state.profilePage.newPostText, src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'};
+  state.profilePage.postData.push(post);
+  state.profilePage.newPostText = '';
+  rerenderEntireTree(state);
+}
+
+export let addMessage = (newMessage) => {
+  let text = {id: 3, text: newMessage};
+  state.messagesPage.dialogsData[0].message.push(text);
+  rerenderEntireTree(state);
+}
+
+export let changeNewPost = (text) => {
+  state.profilePage.newPostText = text;
+  rerenderEntireTree(state);
 }
 
 export default state;
