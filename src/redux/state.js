@@ -1,3 +1,7 @@
+const ADD_POST = 'ADD-POST';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
+
 let store = {
   _state: {
     profilePage: {
@@ -30,21 +34,27 @@ let store = {
   },
 
   dispatch(action) {
-    if(action.type === 'ADD-POST') {
+    if(action.type === ADD_POST) {
       let post = {id: 5, title: this._state.profilePage.newPostText, src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'};
       this._state.profilePage.postData.push(post);
       this._state.profilePage.newPostText = '';
       this._callSubscriber(this._state);
-    } else if (action.type === 'ADD-MESSAGE') {
+    } else if (action.type === ADD_MESSAGE) {
       let text = {id: 3, text: action.newMessage};
       this._state.messagesPage.dialogsData[0].message.push(text);
       this._callSubscriber(this._state);
-    } else if (action.type === 'CHANGE-NEW-POST') {
+    } else if (action.type === CHANGE_NEW_POST) {
       this._state.profilePage.newPostText = action.text;
       this._callSubscriber(this._state);
     }
   } 
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+
+export const changeNewPostActionCreator = (text) => ({type: CHANGE_NEW_POST, text: text})
+
+export const addMessageActionCreator = (newMessage) => ({type: ADD_MESSAGE, newMessage: newMessage})
 
 export default store;
 window.store = store;
