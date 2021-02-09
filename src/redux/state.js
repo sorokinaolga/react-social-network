@@ -1,4 +1,6 @@
-import { rerenderEntireTree } from "../render";
+let rerenderEntireTree = () => {
+
+}
 
 let state = {
   profilePage: {
@@ -21,22 +23,26 @@ let state = {
   }
 }
 
-export let addPost = () => {
+export const addPost = () => {
   let post = {id: 5, title: state.profilePage.newPostText, src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'};
   state.profilePage.postData.push(post);
   state.profilePage.newPostText = '';
   rerenderEntireTree(state);
 }
 
-export let addMessage = (newMessage) => {
+export const addMessage = (newMessage) => {
   let text = {id: 3, text: newMessage};
   state.messagesPage.dialogsData[0].message.push(text);
   rerenderEntireTree(state);
 }
 
-export let changeNewPost = (text) => {
+export const changeNewPost = (text) => {
   state.profilePage.newPostText = text;
   rerenderEntireTree(state);
+}
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
 }
 
 export default state;
