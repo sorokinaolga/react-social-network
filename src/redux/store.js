@@ -1,6 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
 
 let store = {
   _state: {
@@ -11,7 +10,7 @@ let store = {
         {id: 3, title: 'Post 3', src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'},
         {id: 4, title: 'Post 4', src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'},
       ],
-      newPostText: 'it-kamasutra',
+      newPostText: '',
     },
     messagesPage: {
       dialogsData: [
@@ -20,7 +19,8 @@ let store = {
         {id: 3, name: 'Лена', message: [{id: 1, text: 'Здорово'}, {id: 2, text: 'Как дела?'},]},
         {id: 4, name: 'Света', message: [{id: 1, text: 'Привет'}, {id: 2, text: 'Как дела?'},]},
         {id: 5, name: 'Катя', message: [{id: 1, text: 'Хелоу'}, {id: 2, text: 'Как дела?'},]},
-      ] 
+      ],
+      newMessageText: '', 
     }
   },
   _callSubscriber() {
@@ -34,27 +34,13 @@ let store = {
   },
 
   dispatch(action) {
-    if(action.type === ADD_POST) {
-      let post = {id: 5, title: this._state.profilePage.newPostText, src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'};
-      this._state.profilePage.postData.push(post);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this._state);
-    } else if (action.type === ADD_MESSAGE) {
-      let text = {id: 3, text: action.newMessage};
-      this._state.messagesPage.dialogsData[0].message.push(text);
-      this._callSubscriber(this._state);
-    } else if (action.type === CHANGE_NEW_POST) {
-      this._state.profilePage.newPostText = action.text;
-      this._callSubscriber(this._state);
-    }
+
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
+    this._callSubscriber(this._state);
+
   } 
 }
-
-export const addPostActionCreator = () => ({type: ADD_POST})
-
-export const changeNewPostActionCreator = (text) => ({type: CHANGE_NEW_POST, text: text})
-
-export const addMessageActionCreator = (newMessage) => ({type: ADD_MESSAGE, newMessage: newMessage})
 
 export default store;
 window.store = store;
