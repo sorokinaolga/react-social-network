@@ -6,23 +6,18 @@ import App from './App';
 import { BrowserRouter} from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
 
-let rerenderEntireTree = (store) => {
-    ReactDOM.render(
-      <React.StrictMode>
-        <BrowserRouter>
-          <App store={store}/>
-        </BrowserRouter>
-      </React.StrictMode>,
-    document.getElementById('root')
-    );
-}
-
-rerenderEntireTree(store);
-
-store.subscribe(() => {
-  rerenderEntireTree(store);
-});
+ReactDOM.render(
+  <React.StrictMode>
+      <BrowserRouter>
+          <Provider store={store}>
+              <App />
+          </Provider>
+      </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -6,7 +6,7 @@ import Post from './Post/Post';
 const MyPosts = (props) => {
 
     let arrayPost = 
-      props.postData.map(element => <Post title={element.title} src={element.src} />);
+      props.profilePage.postData.map(element => <Post title={element.title} src={element.src} />);
 
     let newPostElement = React.createRef();  
     
@@ -24,7 +24,7 @@ const MyPosts = (props) => {
           <h3>My posts</h3>
           <div>
             <div>
-              <textarea onChange={onChangePost} ref={newPostElement} value={props.newPostText}/>
+              <textarea onChange={onChangePost} ref={newPostElement} value={props.profilePage.newPostText}/>
             </div>
             <div>
               <button onClick={onClickAddPost}>Add post</button>
