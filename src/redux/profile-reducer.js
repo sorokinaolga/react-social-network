@@ -13,19 +13,19 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch(action.type) {
-    case ADD_POST: {
+    case ADD_POST:
         let post = {id: 5, title: state.newPostText, src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'};
-        let stateCopy = {...state};
-        stateCopy.postData = [...state.postData];
-        stateCopy.postData.push(post);
-        stateCopy.newPostText = '';
+        let stateCopy = {
+            ...state,
+            postData: [...state.postData, post],
+            newPostText: '',
+        }
         return stateCopy;
-    }
-    case NEW_POST_CHANGE: {
-        let stateCopy = {...state};
-        stateCopy.newPostText = action.text;  
-        return stateCopy;
-    }
+    case NEW_POST_CHANGE:
+        return {
+            ...state,
+            newPostText: action.text,
+        }
     default:
         return state;  
     }

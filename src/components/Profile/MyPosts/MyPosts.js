@@ -6,7 +6,7 @@ import Post from './Post/Post';
 const MyPosts = (props) => {
 
     let arrayPost = 
-      props.profilePage.postData.map(element => <Post title={element.title} src={element.src} />);
+      props.profilePage.postData.map(element => <Post key={element.id} title={element.title} src={element.src} />);
 
     let newPostElement = React.createRef();  
     
