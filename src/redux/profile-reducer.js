@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const NEW_POST_CHANGE = 'NEW-POST-CHANGE';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
     postData: [
@@ -9,6 +10,7 @@ let initialState = {
         {id: 4, title: 'Post 4', src: 'https://likevideogid.ru/wp-content/uploads/2019/11/likee_avatarka13-2.jpg'},
     ],
     newPostText: '',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -26,12 +28,18 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: action.text,
             }
+        case SET_USER_PROFILE: 
+            return {
+                ...state,
+                profile: action.profile,
+            }
         default:
             return state;  
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const changeNewPostActionCreator = (text) => ({type: NEW_POST_CHANGE, text: text})
+export const addPost = () => ({type: ADD_POST})
+export const changeNewPost = (text) => ({type: NEW_POST_CHANGE, text})
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export default profileReducer;

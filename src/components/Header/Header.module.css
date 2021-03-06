@@ -7,3 +7,15 @@
   width: 60px;
   height: 60px;
 }
+
+.login_block {
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+  color: white;
+}
+
+.login_block a {
+  color: white;
+  text-decoration: none;
+}
