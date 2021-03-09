@@ -1,50 +1,53 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, toggleFetching, setFollowingInProgress } from '../../redux/users-reducer';
+import { getUsersThunkCreator, followThunkCreator, unfollowThunkCreator, getNewUsersThunkCreator } from '../../redux/users-reducer';
 import Users from './Users';
 import Preloader from '../common/preloader/Preloader';
-import { getUsers, getFollowFriend, getUnfollowFriend } from '../../api/api';
 
 
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.toggleFetching(true);
-    getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-      this.props.toggleFetching(false);
-      this.props.setUsers(data.items);
-      this.props.setTotalUsersCount(data.totalCount);
-    });
+    this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
+    // this.props.toggleFetching(true);
+    // getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+    //   this.props.toggleFetching(false);
+    //   this.props.setUsers(data.items);
+    //   this.props.setTotalUsersCount(data.totalCount);
+    // });
   }
   
   onPageChanged = (p) => {
-    this.props.setCurrentPage(p);
-    this.props.toggleFetching(true);
-    getUsers(p, this.props.pageSize).then(data => {
-        this.props.toggleFetching(false);
-        this.props.setUsers(data.items);
-    });
+    this.props.getNewUsersThunkCreator(p, this.props.pageSize);
+    // this.props.setCurrentPage(p);
+    // this.props.toggleFetching(true);
+    // getUsers(p, this.props.pageSize).then(data => {
+    //     this.props.toggleFetching(false);
+    //     this.props.setUsers(data.items);
+    // });
   }
 
   onUnfollowClick = (id) => {
-    this.props.setFollowingInProgress(true, id);
-    getUnfollowFriend(id).then(code => {
-      if (code === 0) {
-        this.props.unfollow(id);
-      }
-      this.props.setFollowingInProgress(false, id);
-    });
+    this.props.unfollowThunkCreator(id);
+    // this.props.setFollowingInProgress(true, id);
+    // getUnfollowFriend(id).then(code => {
+    //   if (code === 0) {
+    //     this.props.unfollow(id);
+    //   }
+    //   this.props.setFollowingInProgress(false, id);
+    // });
   }
 
   onFollowClick = (id) => {
-    this.props.setFollowingInProgress(true, id);
-    getFollowFriend(id).then(code => {
-      if (code === 0) {
-        this.props.follow(id);
-      }
-      this.props.setFollowingInProgress(false, id);
-    });
+    this.props.followThunkCreator(id);
+    // this.props.setFollowingInProgress(true, id);
+    // getFollowFriend(id).then(code => {
+    //   if (code === 0) {
+    //     this.props.follow(id);
+    //   }
+    //   this.props.setFollowingInProgress(false, id);
+    // });
   }
 
   render() {
@@ -55,8 +58,6 @@ class UsersContainer extends React.Component {
       currentPage={this.props.currentPage} 
       onPageChanged={this.onPageChanged} 
       users={this.props.users} 
-      unfollow={this.props.unfollow} 
-      follow={this.props.follow} 
       onUnfollowClick={this.onUnfollowClick}
       onFollowClick={this.onFollowClick}
       followingInProgress={this.props.followingInProgress}/>}
@@ -76,12 +77,9 @@ let mapStateToProps = (state) => {
 }
 
 export default connect (mapStateToProps, { 
-  follow,
-  unfollow,
-  setUsers,
-  setCurrentPage,
-  setTotalUsersCount,
-  toggleFetching,
-  setFollowingInProgress,
+  getUsersThunkCreator,
+  followThunkCreator,
+  unfollowThunkCreator,
+  getNewUsersThunkCreator
   }) (UsersContainer);
 

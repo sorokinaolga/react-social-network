@@ -18,11 +18,11 @@ export const getUsers = (currentPage = 1, pageSize = 5) => {
 
 }
 
-export const getUserPrifile = (userId = 2) => {
+export const getProfile = (userId = 2) => {
 
     return instance.get(`profile/${userId}`)
     .then(response => {
-        return response.data;
+        return response;
     })
 
 }
