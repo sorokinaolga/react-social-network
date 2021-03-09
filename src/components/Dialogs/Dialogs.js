@@ -21,7 +21,7 @@ const Dialogs = (props) => {
     let text = e.target.value;
     props.changeNewMessage(text);
   }
-
+  
   return (
     <div className={style.dialogs}>
       <div className={style.items}>
