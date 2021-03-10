@@ -18,14 +18,14 @@ const Users = (props) => {
   return <div>
     <div>
       {pages.map(p => {
-        if (p < 20) {return <span className={p === props.currentPage && style.selected_page} onClick={() => {props.onPageChanged(p)}}>{p} </span>}
+        if (p < 40) {return <span className={p === props.currentPage && style.selected_page} onClick={() => {props.onPageChanged(p)}}>{p} </span>}
       })}
     </div>
     {
       props.users.map(element => <div key={element.id}>
         <span>
           <NavLink to={'/profile/' + element.id}>
-            <img src={element.photos.small != null ? element.photos.small : userAvatar} className={style.users_avatar}></img>
+            <img src={element.photos.small != null ? element.photos.small : userAvatar} className={style.users_avatar} alt='avatar'></img>
           </NavLink>
           <div>
             {element.followed 

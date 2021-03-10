@@ -18,13 +18,21 @@ export const getUsers = (currentPage = 1, pageSize = 5) => {
 
 }
 
-export const getProfile = (userId = 2) => {
-
-    return instance.get(`profile/${userId}`)
-    .then(response => {
-        return response;
-    })
-
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`)
+        .then(response => {
+            return response;
+        })
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`);
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {
+            status: status
+        });
+    },
 }
 
 export const getAuthMe = () => {
