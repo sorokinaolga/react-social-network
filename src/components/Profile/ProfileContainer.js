@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -15,6 +14,9 @@ class ProfileContainer extends React.Component {
     let userId = this.props.match.params.userId;
     if(!userId) {
       userId = this.props.authUserId;
+      if(!userId) {
+        this.props.history.push('/login');
+      }
     }
     this.props.getUserProfileThunkCreator(userId);
     this.props.getUserStatus(userId);
