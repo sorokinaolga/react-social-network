@@ -4,6 +4,7 @@ const ADD_POST = 'social_network/profile/ADD-POST';
 const SET_USER_PROFILE = 'social_network/profile/SET_USER_PROFILE';
 const SET_STATUS = 'social_network/profile/SET_STATUS';
 const DELETE_POST = 'social_network/profile/DELETE_POST';
+const SET_AVATAR = 'social_network/profile/SET_AVATAR';
 
 let initialState = {
     postData: [
@@ -38,6 +39,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status,
             }
+        case SET_AVATAR:
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+            }
         default:
             return state;  
     }
@@ -47,6 +53,7 @@ export const addPost = (text) => ({type: ADD_POST, text})
 export const deletePost = (postId) => ({type: DELETE_POST, postId})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
+export const setAvatar = (photos) => ({type: SET_AVATAR, photos})
 
 export const getUserProfileThunkCreator = (userId) => async (dispatch) => {
     let response = await profileAPI.getProfile(userId);
@@ -62,6 +69,13 @@ export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status);
     if(response.data.resultCode === 0) {
         dispatch(setStatus(status));
+    }
+}
+
+export const saveAvatar = (file) => async (dispatch) => {
+    let response = await profileAPI.saveAvatar(file);
+    if(response.data.resultCode === 0) {
+        dispatch(setAvatar(response.data.data.photos));
     }
 }
 
