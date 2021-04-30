@@ -55,15 +55,15 @@ const ProfileInfo = (props) => {
 const ProfileData = ({profile, isOwner, goToEditMode}) => {
   return <div>
     {/* div>FullName: {profile.fullName}</div>< */}
-    <><b>Looking for a job:</b> {profile.lookingForAJob ? 'yes' : 'no'}</>
+    <><b>В поисках работы:</b> {profile.lookingForAJob ? 'да' : 'нет'}</>
     { profile.lookingForAJob &&
-    <div><b>My professional skills:</b> {profile.lookingForAJobDescription}</div>
+    <div><b>Профессиональные навыки:</b> {profile.lookingForAJobDescription}</div>
     }
-    <div><b>About me:</b> {profile.aboutMe}</div>
-    <div><b>Contacts:</b> {Object.keys(profile.contacts).map(key => {
+    <div><b>Обо мне:</b> {profile.aboutMe}</div>
+    <div><b>Контакты:</b> {Object.keys(profile.contacts).map(key => {
         return <Contact contactTitle={key} contactValue={profile.contacts[key]} />
     })}</div>
-    {isOwner && <button onClick={goToEditMode}>Edit profile</button>}
+    {isOwner && <button onClick={goToEditMode}>Редактировать профиль</button>}
   </div>
 }
 

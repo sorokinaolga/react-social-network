@@ -12,22 +12,20 @@ const User = ({user, ...props}) => {
           <NavLink to={'/profile/' + user.id}>
             <img src={user.photos.small != null ? user.photos.small : userAvatar} className={style.users_avatar} alt='avatar'></img>
           </NavLink>
+          <span>
+            <div>{user.name}</div>
+            <div>{user.status}</div>
+          </span>
           <div>
             {user.followed 
               ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {props.onUnfollowClick(user.id)}}>Отписаться</button> 
               : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {props.onFollowClick(user.id)}}>Подписаться</button>}
           </div>
         </span>
-        <span>
-          <span>
-            <div>{user.name}</div>
-            <div>{user.status}</div>
-          </span>
-          <span>
-            <div>{"user.location.country"}</div>
-            <div>{"user.location.city"}</div>
-          </span>
-        </span>
+        {/* <span>
+          <div>{"user.location.country"}</div>
+          <div>{"user.location.city"}</div>
+        </span> */}
       </div>
 
 }

@@ -11,8 +11,8 @@ const LoginForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div><Field placeholder={'Email'} name={'email'} component={Input} validate={[required]}/></div>
-            <div><Field placeholder={'Password'} name={'password'} component={Input} validate={[required]} type={'password'}/></div>
-            <div><Field type={'checkbox'} name={'rememberMe'} component={'input'}/> remember me</div>
+            <div><Field placeholder={'Пароль'} name={'password'} component={Input} validate={[required]} type={'password'}/></div>
+            <div><Field type={'checkbox'} name={'rememberMe'} component={'input'}/> Запомнить меня</div>
 
             {props.captchaUrl && 
                 <div>
@@ -20,7 +20,7 @@ const LoginForm = (props) => {
                     <Field placeholder={''} name={'captcha'} component={Input} validate={[required]}/>
                 </div>}
             { props.error && <div className={style.form_error}>{props.error}</div>}
-            <div><button>Login</button></div>
+            <div><button>Войти</button></div>
         </form>
     )
 }
