@@ -5,23 +5,26 @@ import { Field, reduxForm } from 'redux-form';
 import { loginThunkCreator, logoutThunkCreator } from '../../redux/auth-reducer';
 import { required } from '../../utils/validators/validators';
 import { Input } from '../common/FormsControls/FormsControls';
-import style from '../common/FormsControls/FormsControls.module.css';
+import style from './Login.module.css';
 
 const LoginForm = (props) => {
     return(
-        <form onSubmit={props.handleSubmit}>
-            <div><Field placeholder={'Email'} name={'email'} component={Input} validate={[required]}/></div>
-            <div><Field placeholder={'Пароль'} name={'password'} component={Input} validate={[required]} type={'password'}/></div>
-            <div><Field type={'checkbox'} name={'rememberMe'} component={'input'}/> Запомнить меня</div>
+        <div className={style.box}>
+            <h1 className={style.title}>Login</h1>
+            <form onSubmit={props.handleSubmit}>
+                <Field className={style.input} placeholder={'Email'} name={'email'} component={Input} validate={[required]}/>
+                <Field className={style.input} placeholder={'Пароль'} name={'password'} component={Input} validate={[required]} type={'password'}/>
+                <div className={style.input_remember}><Field type={'checkbox'} name={'rememberMe'} component={'input'} /> <label htmlFor={'rememberMe'}>Запомнить меня</label></div>
 
-            {props.captchaUrl && 
-                <div>
-                    <img src={props.captchaUrl} /> 
-                    <Field placeholder={''} name={'captcha'} component={Input} validate={[required]}/>
-                </div>}
-            { props.error && <div className={style.form_error}>{props.error}</div>}
-            <div><button>Войти</button></div>
-        </form>
+                {props.captchaUrl && 
+                    <div>
+                        <img src={props.captchaUrl} /> 
+                        <Field className={style.input} placeholder={''} name={'captcha'} component={Input} validate={[required]}/>
+                    </div>}
+                { props.error && <p className={style.form_error}>{props.error}</p>}
+                <button className={style.button} >Войти</button>
+            </form>
+        </div>
     )
 }
 
@@ -38,12 +41,8 @@ const Login = (props) => {
         return <Redirect to={'/profile'} />
     }
 
-    return(
-        <div>
-            <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmitLoginForm} captchaUrl={props.captchaUrl} />
-        </div>
-    )
+    return <LoginReduxForm onSubmit={onSubmitLoginForm} captchaUrl={props.captchaUrl} />
+
 }
 
 const mapStateToProps = (state) => ({
