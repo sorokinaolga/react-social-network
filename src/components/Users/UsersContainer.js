@@ -11,44 +11,18 @@ class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
-    // this.props.toggleFetching(true);
-    // getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-    //   this.props.toggleFetching(false);
-    //   this.props.setUsers(data.items);
-    //   this.props.setTotalUsersCount(data.totalCount);
-    // });
   }
   
   onPageChanged = (p) => {
     this.props.getNewUsersThunkCreator(p, this.props.pageSize);
-    // this.props.setCurrentPage(p);
-    // this.props.toggleFetching(true);
-    // getUsers(p, this.props.pageSize).then(data => {
-    //     this.props.toggleFetching(false);
-    //     this.props.setUsers(data.items);
-    // });
   }
 
   onUnfollowClick = (id) => {
     this.props.unfollowThunkCreator(id);
-    // this.props.setFollowingInProgress(true, id);
-    // getUnfollowFriend(id).then(code => {
-    //   if (code === 0) {
-    //     this.props.unfollow(id);
-    //   }
-    //   this.props.setFollowingInProgress(false, id);
-    // });
   }
 
   onFollowClick = (id) => {
     this.props.followThunkCreator(id);
-    // this.props.setFollowingInProgress(true, id);
-    // getFollowFriend(id).then(code => {
-    //   if (code === 0) {
-    //     this.props.follow(id);
-    //   }
-    //   this.props.setFollowingInProgress(false, id);
-    // });
   }
 
   render() {
@@ -66,20 +40,8 @@ class UsersContainer extends React.Component {
   }
 }
 
-// let mapStateToProps = (state) => {
-//   return {
-//     users: state.usersPage.users,
-//     pageSize: state.usersPage.pageSize,
-//     totalUsersCount: state.usersPage.totalUsersCount,
-//     currentPage: state.usersPage.currentPage,
-//     isFetching: state.usersPage.isFetching,
-//     followingInProgress: state.usersPage.followingInProgress,
-//   }
-// }
-
 let mapStateToProps = (state) => {
   return {
-    // users: getUsers(state),
     users: getUsersSelector(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
@@ -94,5 +56,5 @@ export default connect (mapStateToProps, {
   followThunkCreator,
   unfollowThunkCreator,
   getNewUsersThunkCreator
-  }) (UsersContainer);
+})(UsersContainer);
 

@@ -3,11 +3,6 @@
   background-color: green;
 }
 
-.header img {
-  width: 60px;
-  height: 60px;
-}
-
 .login_block {
   float: right;
   margin-top: 20px;
@@ -18,4 +13,11 @@
 .login_block a {
   color: white;
   text-decoration: none;
+}
+
+.logo {
+  color: white;
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: 700;
 }
