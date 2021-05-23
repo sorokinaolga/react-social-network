@@ -1,4 +1,4 @@
-import { stopSubmit } from "redux-form";
+// import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
 const ADD_POST = 'social_network/profile/ADD-POST';

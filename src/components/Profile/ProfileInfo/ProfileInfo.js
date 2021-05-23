@@ -24,23 +24,10 @@ const ProfileInfo = (props) => {
       setEditMode(false);
     }
 
-    // const onSubmit = async (formData) => {
-    //   await props.saveProfile(formData);
-    //   setEditMode(false);
-    // }
-    
-    // const onSubmit = (formData) => {
-    //   props.saveProfile(formData).then(
-    //     () => {
-    //       setEditMode(false);
-    //     }
-    //   )
-    // }
-
     return (
       
       <div className={style.profile}>
-        <img src={props.profile.photos.large != null ? props.profile.photos.large : userAvatar} height='200' width='200'></img>
+        <img src={props.profile.photos.large != null ? props.profile.photos.large : userAvatar} height='200' width='200' alt=''></img>
         <b>{props.profile.fullName} </b>
         {props.isOwner && <input type={'file'} onChange={handlerUpdateAvatar} />}
         { editMode
@@ -54,14 +41,13 @@ const ProfileInfo = (props) => {
 
 const ProfileData = ({profile, isOwner, goToEditMode}) => {
   return <div>
-    {/* div>FullName: {profile.fullName}</div>< */}
     <><b>В поисках работы:</b> {profile.lookingForAJob ? 'да' : 'нет'}</>
     { profile.lookingForAJob &&
     <div><b>Профессиональные навыки:</b> {profile.lookingForAJobDescription}</div>
     }
     <div><b>Обо мне:</b> {profile.aboutMe}</div>
     <div><b>Контакты:</b> {Object.keys(profile.contacts).map(key => {
-        return <Contact contactTitle={key} contactValue={profile.contacts[key]} />
+        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
     })}</div>
     {isOwner && <button onClick={goToEditMode}>Редактировать профиль</button>}
   </div>
