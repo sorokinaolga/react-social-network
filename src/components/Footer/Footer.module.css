@@ -1,0 +1,24 @@
+.app-footer {
+  grid-area: footer;
+  background-color: #3c425f;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.footer-year {
+  justify-self: start;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #aaaaaa;
+}
+
+.footer-copyright {
+  justify-self: end;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #aaaaaa;
+}

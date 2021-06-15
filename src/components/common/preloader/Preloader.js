@@ -1,6 +1,6 @@
 
 const Preloader = () => {
-  return <svg style={{margin: 'auto', background: 'transparent', display: 'block', shapeRendering: 'auto' }} width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+  return <svg style={{margin: 'auto', background: 'transparent', display: 'block', shapeRendering: 'auto' }} width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
     <g transform="translate(80,50)">
       <g transform="rotate(0)">
         <circle cx="0" cy="0" r="6" fill="#000000" fillOpacity="1">

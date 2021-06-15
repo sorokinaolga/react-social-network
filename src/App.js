@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import style from './App.module.css';
 import Navbar from './components/Navbar/Navbar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import { Route, withRouter } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeThunkCreator } from './redux/app-reducer';
 import Preloader from './components/common/preloader/Preloader';
+import Footer from './components/Footer/Footer';
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,14 +22,15 @@ class App extends React.Component {
       return <Preloader />
     }
     return (
-        <div className='app-wrapper'>
+        <div className={style['app-wrapper']}>
           <HeaderContainer />
           <Navbar />
-          <div className='app-content'>
+          <div className={style['app-content']}>
             <Route path='/login' render={() => <Login />} />
             <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
             <Route path='/users' render={() => <UsersContainer />}/>
           </div>
+          <Footer />
         </div>
       );
   }

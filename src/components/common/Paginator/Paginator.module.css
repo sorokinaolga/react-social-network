@@ -2,12 +2,37 @@
   margin: 10px;
 }
 
-.page_number {
-  padding: 2px;
-  border: 1px solid black;
+.page-number {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin: 0 1px;
+  border: 1px solid #b4bef0;
+  box-sizing: border-box;
+  padding-top: 5px;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.page_number.selected_page {
-  font-weight: bold;
-  border-color: red;
+.page-number:hover {
+  font-weight: 700;
+}
+
+.page-number-active {
+  font-weight: 700;
+  border-color: #576bcc;
+}
+
+.page-button {
+  box-sizing: border-box;
+  height: 30px;
+  width: 60px;
+  border: 1px solid #b4bef0;
+  background-color: #f1f3fe;
+  color: #3c425f;
+  vertical-align: middle;
+}
+
+.page-button:hover {
+  border-color: #576bcc;
 }

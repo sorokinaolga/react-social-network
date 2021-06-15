@@ -2,6 +2,7 @@
 import React from 'react';
 import Paginator from '../common/Paginator/Paginator';
 import User from './User';
+import style from './Users.module.css';
 
 
 const Users = (props) => {
@@ -11,7 +12,7 @@ const Users = (props) => {
               onPageChanged={props.onPageChanged} 
               totalUsersCount={props.totalUsersCount} 
               pageSize={props.pageSize} />
-    <ul>
+    <ul className={style['user-list']}>
     {
       props.users.map(element => <User user={element}
                                       followingInProgress={props.followingInProgress}

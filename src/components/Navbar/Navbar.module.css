@@ -1,21 +1,39 @@
-.nav {
-  grid-area: n;
-  background-color: grey;
+.app-sidebar {
+  grid-area: sidebar;
+  border-right: 1px solid #b4bef0;
 }
 
-ul {
+.menu-list {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
-.item {
-  color: white;
+.menu-item-link {
+  display: block;
+  padding: 15px 15px 15px 30px;
+  color: #3c425f;
   text-decoration: none;
 }
 
-.item:hover {
-  color: gold;
+.menu-item-link:hover {
+  font-weight: 700;
 }
 
-.item.active {
-  color: darkorange;
+.menu-item-link-active {
+  position: relative;
+  font-weight: 500;
+  color: #576bcc;
+  background-color: #f1f3fe;
+}
+
+.menu-item-link-active::before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 48px;
+  top: 0;
+  left: 0;
+  border-radius: 0 8px 8px 0;
+  background: #576bcc;
 }
