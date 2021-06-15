@@ -10,7 +10,7 @@ import style from './Login.module.css';
 const LoginForm = (props) => {
     return(
         <div className={style.box}>
-            <h1 className={style.title}>Login</h1>
+            <h1 className={style.title}>Логин</h1>
             <form onSubmit={props.handleSubmit}>
                 <Field className={style.input} placeholder={'Email'} name={'email'} component={Input} validate={[required]}/>
                 <Field className={style.input} placeholder={'Пароль'} name={'password'} component={Input} validate={[required]} type={'password'}/>
