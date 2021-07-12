@@ -1,5 +1,51 @@
-.users_avatar {
-  width: 70px;
-  height: 70px;
+.user-list-item {
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(60, 66, 95, 0.2);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 500px;
+  display: grid;
+  grid-template-columns: auto 1fr 100px;
 }
 
+.item-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  border: 1px solid #b4bef0;
+  overflow: hidden;
+}
+
+.item-img:hover {
+  border: 2px solid #b4bef0;
+}
+
+.item-description {
+  margin-left: 15px;
+}
+
+.item-name {
+  font-weight: 700;
+}
+
+.item-button-wrapper {
+  align-self: end;
+  justify-self: end;
+}
+
+.item-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #576bcc;
+  color: #fff;
+  font-weight: 700;
+}
+
+.item-button:disabled {
+  pointer-events: none;
+  background-color: #f1f3fe;
+  color: #3c425f;
+  border: 1px solid #b4bef0;
+}

@@ -5,9 +5,6 @@ import { logoutThunkCreator } from '../../redux/auth-reducer';
 
 
 class HeaderContainer extends React.Component {
-  // componentDidMount() {
-  //   this.props.getAuthUserDataThunkCreator();
-  // }
 
   render() {
     return (

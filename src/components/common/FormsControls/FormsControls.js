@@ -3,10 +3,9 @@ import style from './FormsControls.module.css';
 
 const FormControl = ({input, meta: {touched, error}, children, ...props}) => {
     const hasError = touched && error;
-    return (
-        <div className={style.form_control + ' ' + (hasError ? style.error : '')}>
+    return (        
+        <div className={`${style.form_control} + ' ' + ${hasError ? style.error : ''}`}>
             {children}
-            {hasError && <div className={style.error_text}>{error}</div>}
         </div>
     )
 }
