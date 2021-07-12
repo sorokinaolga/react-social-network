@@ -3,8 +3,8 @@
 Сайт находится в стадии разработки. Посмотреть проект [https://sorokinaolga.github.io/training-project-social-network/](https://sorokinaolga.github.io/training-project-social-network/)
 
 Тестовые данные для входа:<br>
-Логин: <br>
-Пароль: <br>
+Логин: mocktest79@gmail.com
+Пароль: mocktest
 
 ## Работа с проектом
 
