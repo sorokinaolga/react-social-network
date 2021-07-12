@@ -4,14 +4,10 @@ import style from './Navbar.module.css';
 
 const Navbar = () => {
   return (
-    <nav className={style.nav}>
-      <ul>
-        <li><NavLink className={style.item} activeClassName={style.active} to="/profile">Profile</NavLink></li>
-        <li><NavLink className={style.item} activeClassName={style.active} to="/dialogs">Messages</NavLink></li>
-        <li><NavLink className={style.item} activeClassName={style.active} to="/news">News</NavLink></li>
-        <li><NavLink className={style.item} activeClassName={style.active} to="/music">Music</NavLink></li>
-        <li><NavLink className={style.item} activeClassName={style.active} to="/users">Users</NavLink></li>
-        <li><NavLink className={style.item} activeClassName={style.active} to="/settings">Settings</NavLink></li>
+    <nav className={style['app-sidebar']}>
+      <ul className={style['menu-list']}>
+        <li><NavLink className={style['menu-item-link']} activeClassName={style['menu-item-link-active']} to="/profile">Профиль</NavLink></li>
+        <li><NavLink className={style['menu-item-link']} activeClassName={style['menu-item-link-active']} to="/users">Пользователи</NavLink></li>
       </ul>
     </nav>
   );

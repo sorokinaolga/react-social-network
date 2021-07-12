@@ -4,15 +4,14 @@ import style from './Header.module.css';
 
 const Header = (props) => {
     return (
-      <header className={style.header}>
-        <img src='https://www.flaticon.com/premium-icon/icons/svg/3387/3387987.svg' />
-
-        <div className={style.login_block}>
-          { props.isAuth ? <div><span>{props.login}</span> <button onClick={props.logoutThunkCreator}>Logout</button></div> 
-            : <NavLink to='/login'>Login</NavLink>
+      <div className={style['app-header']}>
+        <span className={style['logo']}>Социальная сеть</span>
+        <div className={style['login-block']}>
+          { props.isAuth ? <div><span className={style['login-name']}>{props.login}</span> <button className={style['login-button']} onClick={props.logoutThunkCreator}>Выйти</button></div> 
+            : <NavLink className={style['login-button']} to='/login'>Войти</NavLink>
           }
         </div>
-      </header>
+      </div>
     );
 }
 

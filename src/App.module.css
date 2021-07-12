@@ -1,0 +1,23 @@
+.app-wrapper {
+  margin: 0 auto;
+  width: 1200px;
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'sidebar content'
+    'footer footer';
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 60px 1fr 50px;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: #3c425f;
+}
+
+.app-content {
+  grid-area: content;
+  padding: 10px;
+  background-color: #f1f3fe;
+}

@@ -1,5 +1,41 @@
-.profile img {
-  display: block;
-  width: 200px;
-  height: 200px;
+.profile-wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    'img info'
+    'description description';
+  grid-template-columns: 180px 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.profile-img {
+  grid-area: img;
+  border-radius: 8px;
+}
+
+.profile-info {
+  grid-area: info;
+}
+
+.profile-name {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.profile-button {
+  margin-top: 105px;
+}
+
+.profile-description {
+  grid-area: description;
+}
+
+.contact {
+  padding-left: 15px;
+}
+
+.description-button {
+  margin-top: 10px;
 }

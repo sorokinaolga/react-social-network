@@ -20,7 +20,6 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-
 export const initializedSuccessActionCreator = () => ({type: INITIALIZED_SUCCESS})
 
 export const initializeThunkCreator = () => (dispatch) => {

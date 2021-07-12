@@ -7,28 +7,20 @@ import { NavLink } from 'react-router-dom';
 
 const User = ({user, ...props}) => {
 
-   return <div key={props.key}>
-        <span>
-          <NavLink to={'/profile/' + user.id}>
-            <img src={user.photos.small != null ? user.photos.small : userAvatar} className={style.users_avatar} alt='avatar'></img>
+  return <li className={style['user-list-item']} key={props.key}>
+          <NavLink className={style['item-img']} to={'/profile/' + user.id}>
+            <img src={user.photos.small != null ? user.photos.small : userAvatar} alt='avatar' width='100' height='100'></img>
           </NavLink>
-          <div>
-            {user.followed 
-              ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {props.onUnfollowClick(user.id)}}>Отписаться</button> 
-              : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {props.onFollowClick(user.id)}}>Подписаться</button>}
+          <div className={style['item-description']}>
+            <div className={style['item-name']}>{user.name}</div>
+            <div>{user.status || 'статус'}</div>
           </div>
-        </span>
-        <span>
-          <span>
-            <div>{user.name}</div>
-            <div>{user.status}</div>
-          </span>
-          <span>
-            <div>{"user.location.country"}</div>
-            <div>{"user.location.city"}</div>
-          </span>
-        </span>
-      </div>
+          <div className={style['item-button-wrapper']}>
+            {user.followed 
+              ? <button className={style['item-button']} disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {props.onUnfollowClick(user.id)}}>Отписаться</button> 
+              : <button className={style['item-button']} disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {props.onFollowClick(user.id)}}>Подписаться</button>}
+          </div>
+        </li>
 
 }
 
