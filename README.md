@@ -1,10 +1,10 @@
-# Учебный проект Социальная сеть
+# Тренировочный проект Социальная сеть
 
-Сайт находится в стадии разработки. Посмотреть проект [https://sorokinaolga.github.io/training-project-social-network/](https://sorokinaolga.github.io/training-project-social-network/)
+[Посмотреть проект](https://sorokinaolga.github.io/react-social-network/)
 
-Тестовые данные для входа:<br>
-Логин: <br>
-Пароль: <br>
+Тестовые данные для входа:
+- Логин: mocktest79@gmail.com
+- Пароль: mocktest
 
 ## Работа с проектом
 
